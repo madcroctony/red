@@ -6,6 +6,8 @@ black⇒黒のユーザーのコマ数，white⇒白のユーザーのコマ数<
 entry⇒ログインしている人数<br>
 turn⇒1と表示されているユーザーがコマを置くことができる，enemy⇒対戦相手<br>
 フレームワークはDjango，サーバはPythonAnywhereのものを使用<br>
-1つ目：aaaとbbbが対戦している動画，2つ目：cccとdddが対戦している動画<br>
+1つ目：aaaとbbbが対戦している動画，2つ目：eeeとfffが対戦している動画（最後にログインしたため始まるのが遅いです）<br>
+
+https://user-images.githubusercontent.com/76951687/122194124-1d002400-ced0-11eb-87bd-d5822a06ef1e.mp4
 
 https://user-images.githubusercontent.com/76951687/122193023-1fae4980-cecf-11eb-9fa7-73d0f4076783.mp4
