@@ -1,0 +1,86 @@
+{% load static %}
+<!doctype html>
+<html lang="ja">
+    <head>
+        <meta charset="utf-8">
+        <title>{{title}}</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+            crossorigin="anonymous">
+
+    </head>
+    <body>
+        <br>
+        <div style="text-align:center">
+            <h1>account is ={{request.user.username}}</h1>
+            {% if acount %}
+                {% for name, list in acount.items %}
+                {% if name == request.user.username %}
+                    {% for line in list %}
+                        <div style="display:inline-flex">
+                            {% for column in line %}
+                                {% if column == '＋' %}
+                                <form action="{% url 'eru:cot' %}" method="post">
+                                    {% csrf_token %}
+                                    <input type="submit" name="hit" value="{{ forloop.parentloop.counter0 }}/{{ forloop.counter0 }}" class="btn btn-primary" style="margin:9px;height:100px;width:80px">
+                                </form>
+                                {% elif column == 'ｂ' %}
+                                    <input type="submit" value="ｂ" class="btn btn-dark" style="margin:9px;height:100px;width:80px">
+
+                                {% elif column == 'ｗ' %}
+                                    <input type="submit" value="ｗ" class="btn btn-light" style="margin:9px;height:100px;width:80px">
+
+                                {% else %}
+                                    <input type="submit" value="" class="btn btn-secondary" style="margin:9px;height:100px;width:80px">
+
+
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+
+                    <br>
+                    {% endfor %}
+                {% endif %}
+                {% endfor %}
+            {% endif %}
+
+            <h2>black = {{black}}</h2>
+            <h2>white = {{white}}</h2>
+
+            <h2>entry={{entry}}</h2>
+
+            <div style="display:inline-flex">
+                {% if turn %}
+                    <h2>turn = </h2>
+                    {% for name, number in turn.items %}
+                        <h2>{{name}} : {{number}}/</h2>
+                    {% endfor %}
+                {% endif %}
+            </div>
+            <br>
+
+            <div style="display:inline-flex">
+                {% if enemy %}
+                    <h2>enemy = </h2>
+                    {% for name, name2 in enemy.items %}
+                        <h2>{{name}} : {{name2}}/</h2>
+                    {% endfor %}
+                {% endif %}
+            </div>
+            <br>
+            <font size="7"><a href="{% url 'eru:all_logout' %}">logout</a></font>
+
+            <script>
+                function doReload()
+                {
+                    window.location.reload();
+                }
+
+                window.addEventListener('load', function ()
+                {
+                    setTimeout(doReload, 2500);
+                });
+            </script>
+
+        </div>
+    </body>
+</html>
